@@ -78,10 +78,17 @@ button:hover {
 
 /* DELETE BUTTON */
 .deleteBtn {
-  background: red;
+  background: transparent;
+  color: #dc3545;
   width: auto;
-  padding: 6px 10px;
-  font-size: 12px;
+  padding: 4px 8px;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+.deleteBtn:hover {
+  opacity: 0.9;
 }
 
 /* TOTAL */
@@ -126,4 +133,21 @@ button:hover {
   color: #666;
   margin-top: 4px;
   margin-bottom: 10px;
+}
+details {
+  margin-top: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 5px;
+}
+
+summary:hover {
+  opacity: 0.8;
 }

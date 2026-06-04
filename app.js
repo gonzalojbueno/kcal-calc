@@ -287,12 +287,10 @@ function render() {
           </div>
 
           <button
-            class="deleteBtn"
-            onclick="deleteItem(${index})">
-
-            ❌
-
-          </button>
+  class="deleteBtn"
+  onclick="deleteItem(${index})">
+  🗑️
+</button>
 
         </div>
       `;
@@ -354,12 +352,10 @@ function renderFoods() {
           </div>
 
           <button
-            class="deleteBtn"
-            onclick="deleteFood(${index})">
-
-            ❌
-
-          </button>
+  class="deleteBtn"
+  onclick="deleteItem(${index})">
+  🗑️
+</button>
 
         </div>
       `;
