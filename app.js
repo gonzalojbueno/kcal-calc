@@ -10,56 +10,26 @@ const USERS = [
 ];
 
 function login() {
+  const user = document.getElementById("username").value.trim();
+  const pass = document.getElementById("password").value.trim();
 
-  const user =
-    document.getElementById("username")
-      .value
-      .trim();
-
-  const pass =
-    document.getElementById("password")
-      .value
-      .trim();
-
-  const found =
-    USERS.find(
-      u =>
-        u.username === user &&
-        u.password === pass
-    );
+  const found = USERS.find(
+    u => u.username === user && u.password === pass
+  );
 
   if (!found) {
-
-    document.getElementById(
-      "loginError"
-    ).innerText =
-      "Login incorrecto";
-
+    document.getElementById("loginError").innerText = "Login incorrecto";
     return;
   }
 
-  localStorage.setItem(
-    "user",
-    user
-  );
+  localStorage.setItem("user", user);
 
-  document
-    .getElementById("loginScreen")
-    .classList
-    .add("hidden");
-
-  document
-    .getElementById("appScreen")
-    .classList
-    .remove("hidden");
+  document.getElementById("loginScreen").classList.add("hidden");
+  document.getElementById("appScreen").classList.remove("hidden");
 }
 
 function logout() {
-
-  localStorage.removeItem(
-    "user"
-  );
-
+  localStorage.removeItem("user");
   location.reload();
 }
 
@@ -68,33 +38,41 @@ function logout() {
 // =======================
 
 let registros =
-  JSON.parse(
-    localStorage.getItem("registros")
-  ) || [];
+  JSON.parse(localStorage.getItem("registros")) || [];
 
 let foods =
-  JSON.parse(
-    localStorage.getItem("foods")
-  ) || [];
+  JSON.parse(localStorage.getItem("foods")) || [];
 
 // =======================
-// GUARDAR FOODS
+// GUARDAR DATA
 // =======================
 
 function saveFoods() {
-
-  localStorage.setItem(
-    "foods",
-    JSON.stringify(foods)
-  );
+  localStorage.setItem("foods", JSON.stringify(foods));
 }
 
 function saveRegistros() {
+  localStorage.setItem("registros", JSON.stringify(registros));
+}
 
-  localStorage.setItem(
-    "registros",
-    JSON.stringify(registros)
+// =======================
+// FORMATEAR FECHA
+// =======================
+
+function formatDate(dateString) {
+  const [day, month, year] = dateString.split("-");
+
+  const date = new Date(
+    Number(year),
+    Number(month) - 1,
+    Number(day)
   );
+
+  return date.toLocaleDateString("es-CL", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  });
 }
 
 // =======================
@@ -102,91 +80,46 @@ function saveRegistros() {
 // =======================
 
 function addFood() {
+  const food = document.getElementById("food").value.trim();
+  const kcal100 = parseFloat(document.getElementById("kcal100").value);
+  const grams = parseFloat(document.getElementById("grams").value);
 
-  const food =
-    document.getElementById("food")
-      .value
-      .trim();
-
-  const kcal100 =
-    parseFloat(
-      document.getElementById(
-        "kcal100"
-      ).value
-    );
-
-  const grams =
-    parseFloat(
-      document.getElementById(
-        "grams"
-      ).value
-    );
-
-  if (
-    !food ||
-    isNaN(kcal100) ||
-    isNaN(grams)
-  ) {
-
-    alert(
-      "Completa todos los campos"
-    );
-
+  if (!food || isNaN(kcal100) || isNaN(grams)) {
+    alert("Completa todos los campos");
     return;
   }
 
-  const kcal =
-    (grams * kcal100) / 100;
-
+  const kcal = (grams * kcal100) / 100;
   const now = new Date();
 
   const item = {
-
     food,
-
     grams,
-
     kcal100,
-
     kcal,
-
-    date:
-      now.toLocaleDateString(
-        "es-CL"
-      ),
-
-    time:
-      now.toLocaleTimeString(
-        "es-CL"
-      )
+    date: now.toLocaleDateString("es-CL"),
+    time: now.toLocaleTimeString("es-CL")
   };
 
-  const exists =
-    foods.find(
-      f =>
-        f.food.toLowerCase() ===
-        food.toLowerCase()
-    );
+  const exists = foods.find(
+    f => f.food.toLowerCase() === food.toLowerCase()
+  );
 
   if (!exists) {
-
     foods.push({
       food,
       kcal100
     });
 
     saveFoods();
-
     renderFoods();
   }
 
   registros.push(item);
 
-saveRegistros();
-
-render();
-
-clearInputs();
+  saveRegistros();
+  render();
+  clearInputs();
 }
 
 // =======================
@@ -194,18 +127,9 @@ clearInputs();
 // =======================
 
 function clearInputs() {
-
-  document.getElementById(
-    "food"
-  ).value = "";
-
-  document.getElementById(
-    "kcal100"
-  ).value = "";
-
-  document.getElementById(
-    "grams"
-  ).value = "";
+  document.getElementById("food").value = "";
+  document.getElementById("kcal100").value = "";
+  document.getElementById("grams").value = "";
 }
 
 // =======================
@@ -213,14 +137,9 @@ function clearInputs() {
 // =======================
 
 function deleteItem(index) {
-
-  registros.splice(
-    index,
-    1
-  );
+  registros.splice(index, 1);
 
   saveRegistros();
-
   render();
 }
 
@@ -229,77 +148,71 @@ function deleteItem(index) {
 // =======================
 
 function render() {
-
-  const list =
-    document.getElementById(
-      "list"
-    );
-
-  const totalDiv =
-    document.getElementById(
-      "total"
-    );
+  const list = document.getElementById("list");
+  const totalDiv = document.getElementById("total");
 
   list.innerHTML = "";
 
-  let total = 0;
+  let totalGeneral = 0;
+  const registrosPorFecha = {};
 
-  registros.forEach(
-    (r, index) => {
+  registros.forEach((r, index) => {
+    totalGeneral += r.kcal;
 
-      total += r.kcal;
-
-      list.innerHTML += `
-        <div class="item">
-
-          <div>
-
-            <strong>
-              ${r.food}
-            </strong>
-
-            <br>
-
-            Cantidad:
-            ${r.grams} g
-
-            <br>
-
-            100 g =
-            ${r.kcal100} kcal
-
-            <br>
-
-            Consumidas:
-
-            <strong>
-              ${r.kcal.toFixed(1)}
-              kcal
-            </strong>
-
-            <br>
-
-            <small>
-              ${r.date}
-              ${r.time}
-            </small>
-
-          </div>
-
-          <button
-  class="deleteBtn"
-  onclick="deleteItem(${index})">
-  🗑️
-</button>
-
-        </div>
-      `;
+    if (!registrosPorFecha[r.date]) {
+      registrosPorFecha[r.date] = [];
     }
-  );
 
-  totalDiv.innerText =
-    total.toFixed(1) +
-    " kcal";
+    registrosPorFecha[r.date].push({
+      ...r,
+      originalIndex: index
+    });
+  });
+
+  const fechas = Object.keys(registrosPorFecha).reverse();
+
+  fechas.forEach(fecha => {
+    let totalFecha = 0;
+
+    registrosPorFecha[fecha].forEach(r => {
+      totalFecha += r.kcal;
+    });
+
+    list.innerHTML += `
+      <details class="dayGroup" open>
+        <summary>
+          📅 ${formatDate(fecha)} — ${totalFecha.toFixed(1)} kcal
+        </summary>
+
+        <div class="dayItems">
+          ${registrosPorFecha[fecha].map(r => `
+            <div class="item">
+              <div>
+                <strong>${r.food}</strong><br>
+
+                Cantidad: ${r.grams} g<br>
+
+                100 g = ${r.kcal100} kcal<br>
+
+                Consumidas:
+                <strong>${r.kcal.toFixed(1)} kcal</strong><br>
+
+                <small>${r.time}</small>
+              </div>
+
+              <button
+                class="deleteBtn"
+                onclick="deleteItem(${r.originalIndex})">
+                🗑️
+              </button>
+            </div>
+          `).join("")}
+        </div>
+      </details>
+    `;
+  });
+
+  totalDiv.innerText = totalGeneral.toFixed(1) + " kcal";
 }
 
 // =======================
@@ -307,60 +220,34 @@ function render() {
 // =======================
 
 function renderFoods() {
+  const foodList = document.getElementById("foodList");
+  const suggestions = document.getElementById("foodSuggestions");
 
-  const foodList =
-    document.getElementById(
-      "foodList"
-    );
-
-  const suggestions =
-    document.getElementById(
-      "foodSuggestions"
-    );
-
-  if (
-    !foodList ||
-    !suggestions
-  ) return;
+  if (!foodList || !suggestions) return;
 
   foodList.innerHTML = "";
-
   suggestions.innerHTML = "";
 
-  foods.forEach(
-    (food, index) => {
+  foods.forEach((food, index) => {
+    suggestions.innerHTML += `
+      <option value="${food.food}">
+    `;
 
-      suggestions.innerHTML += `
-        <option
-          value="${food.food}">
-      `;
-
-      foodList.innerHTML += `
-        <div class="item">
-
-          <div>
-
-            <strong>
-              ${food.food}
-            </strong>
-
-            <br>
-
-            ${food.kcal100}
-            kcal / 100g
-
-          </div>
-
-          <button
-  class="deleteBtn"
-  onclick="deleteItem(${index})">
-  🗑️
-</button>
-
+    foodList.innerHTML += `
+      <div class="item">
+        <div>
+          <strong>${food.food}</strong><br>
+          ${food.kcal100} kcal / 100g
         </div>
-      `;
-    }
-  );
+
+        <button
+          class="deleteBtn"
+          onclick="deleteFood(${index})">
+          🗑️
+        </button>
+      </div>
+    `;
+  });
 }
 
 // =======================
@@ -368,25 +255,15 @@ function renderFoods() {
 // =======================
 
 function deleteFood(index) {
+  const foodName = foods[index].food;
 
-  const foodName =
-    foods[index].food;
-
-  if (
-    !confirm(
-      `¿Eliminar ${foodName}?`
-    )
-  ) {
+  if (!confirm(`¿Eliminar ${foodName}?`)) {
     return;
   }
 
-  foods.splice(
-    index,
-    1
-  );
+  foods.splice(index, 1);
 
   saveFoods();
-
   renderFoods();
 }
 
@@ -395,25 +272,15 @@ function deleteFood(index) {
 // =======================
 
 function fillFoodData() {
+  const foodName = document.getElementById("food").value;
 
-  const foodName =
-    document.getElementById(
-      "food"
-    ).value;
-
-  const found =
-    foods.find(
-      f =>
-        f.food.toLowerCase() ===
-        foodName.toLowerCase()
-    );
+  const found = foods.find(
+    f => f.food.toLowerCase() === foodName.toLowerCase()
+  );
 
   if (!found) return;
 
-  document.getElementById(
-    "kcal100"
-  ).value =
-    found.kcal100;
+  document.getElementById("kcal100").value = found.kcal100;
 }
 
 // =======================
@@ -421,91 +288,44 @@ function fillFoodData() {
 // =======================
 
 function setTodayDate() {
-
-  const el =
-    document.getElementById(
-      "todayDate"
-    );
+  const el = document.getElementById("todayDate");
 
   if (!el) return;
 
-  el.innerText =
-    new Date()
-      .toLocaleDateString(
-        "es-CL",
-        {
-          weekday: "long",
-          year: "numeric",
-          month: "long",
-          day: "numeric"
-        }
-      );
+  el.innerText = new Date().toLocaleDateString("es-CL", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
 }
 
 // =======================
 // INIT
 // =======================
 
-window.addEventListener(
-  "load",
-  () => {
+window.addEventListener("load", () => {
+  setTodayDate();
 
-    setTodayDate();
+  render();
+  renderFoods();
 
-    render();
+  document
+    .getElementById("food")
+    ?.addEventListener("change", fillFoodData);
 
-    renderFoods();
+  const user = localStorage.getItem("user");
 
-    document
-      .getElementById(
-        "food"
-      )
-      ?.addEventListener(
-        "change",
-        fillFoodData
-      );
+  const loginScreen = document.getElementById("loginScreen");
+  const appScreen = document.getElementById("appScreen");
 
-    const user =
-      localStorage.getItem(
-        "user"
-      );
+  if (!loginScreen || !appScreen) return;
 
-    const loginScreen =
-      document.getElementById(
-        "loginScreen"
-      );
-
-    const appScreen =
-      document.getElementById(
-        "appScreen"
-      );
-
-    if (
-      !loginScreen ||
-      !appScreen
-    ) {
-      return;
-    }
-
-    if (user) {
-
-      loginScreen.classList.add(
-        "hidden"
-      );
-
-      appScreen.classList.remove(
-        "hidden"
-      );
-
-    } else {
-
-      loginScreen.classList.remove(
-        "hidden"
-      );
-
-      appScreen.classList.add(
-        "hidden"
-      );
-    }
+  if (user) {
+    loginScreen.classList.add("hidden");
+    appScreen.classList.remove("hidden");
+  } else {
+    loginScreen.classList.remove("hidden");
+    appScreen.classList.add("hidden");
   }
-);
+});

@@ -151,3 +151,19 @@ summary {
 summary:hover {
   opacity: 0.8;
 }
+.dayGroup {
+  margin-top: 12px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.dayGroup summary {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.dayItems {
+  margin-top: 8px;
+}
