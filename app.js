@@ -60,19 +60,26 @@ function saveRegistros() {
 // =======================
 
 function formatDate(dateString) {
-  const [day, month, year] = dateString.split("-");
 
-  const date = new Date(
-    Number(year),
-    Number(month) - 1,
-    Number(day)
-  );
+  const [day, month, year] =
+    dateString.split("-");
 
-  return date.toLocaleDateString("es-CL", {
-    day: "numeric",
-    month: "long",
-    year: "numeric"
-  });
+  const months = [
+    "Ene",
+    "Feb",
+    "Mar",
+    "Abr",
+    "May",
+    "Jun",
+    "Jul",
+    "Ago",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dic"
+  ];
+
+  return `${Number(day)} ${months[month - 1]} ${year}`;
 }
 
 // =======================
