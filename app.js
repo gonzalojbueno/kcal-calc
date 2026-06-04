@@ -181,7 +181,8 @@ function render() {
     list.innerHTML += `
       <details class="dayGroup" open>
         <summary>
-          📅 ${formatDate(fecha)} — ${totalFecha.toFixed(1)} kcal
+          <i class="bi bi-calendar3"></i>
+          ${formatDate(fecha)} — ${totalFecha.toFixed(1)} kcal
         </summary>
 
         <div class="dayItems">
@@ -203,7 +204,7 @@ function render() {
               <button
                 class="deleteBtn"
                 onclick="deleteItem(${r.originalIndex})">
-                🗑️
+                <i class="bi bi-trash3"></i>
               </button>
             </div>
           `).join("")}
@@ -220,13 +221,37 @@ function render() {
 // =======================
 
 function renderFoods() {
-  const foodList = document.getElementById("foodList");
-  const suggestions = document.getElementById("foodSuggestions");
 
-  if (!foodList || !suggestions) return;
+  const foodList =
+    document.getElementById(
+      "foodList"
+    );
+
+  const suggestions =
+    document.getElementById(
+      "foodSuggestions"
+    );
+
+  const foodsSummary =
+    document.getElementById(
+      "foodsSummary"
+    );
+
+  if (
+    !foodList ||
+    !suggestions
+  ) return;
 
   foodList.innerHTML = "";
   suggestions.innerHTML = "";
+
+  if (foodsSummary) {
+
+  foodsSummary.innerHTML = `
+    <i class="bi bi-basket"></i>
+    Mis alimentos (${foods.length})
+  `;
+}
 
   foods.forEach((food, index) => {
     suggestions.innerHTML += `
@@ -243,7 +268,7 @@ function renderFoods() {
         <button
           class="deleteBtn"
           onclick="deleteFood(${index})">
-          🗑️
+          <i class="bi bi-trash3"></i>
         </button>
       </div>
     `;

@@ -2,98 +2,279 @@
 <html lang="es">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
   <title>Calorías App</title>
 
-  <link rel="stylesheet" href="styles.css">
+  <!-- Bootstrap -->
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- CSS APP -->
+
+  <link
+    rel="stylesheet"
+    href="styles.css">
+
 </head>
 
-<body>
+<body class="bg-light">
 
   <!-- LOGIN -->
-  <div id="loginScreen" class="screen">
 
-    <h2>Login</h2>
+  <div
+    id="loginScreen"
+    class="screen">
 
-    <input
-      id="username"
-      placeholder="Usuario">
+    <div class="app-card card shadow-sm">
 
-    <input
-      id="password"
-      type="password"
-      placeholder="Contraseña">
+      <div class="card-body">
 
-    <button onclick="login()">
-      Entrar
-    </button>
+        <h2 class="mb-4">
 
-    <p id="loginError"></p>
+          <i class="bi bi-person-circle"></i>
+
+          Login
+
+        </h2>
+
+        <div class="mb-3">
+
+          <label class="form-label">
+
+            Usuario
+
+          </label>
+
+          <input
+            id="username"
+            class="form-control"
+            placeholder="Usuario">
+
+        </div>
+
+        <div class="mb-3">
+
+          <label class="form-label">
+
+            Contraseña
+
+          </label>
+
+          <input
+            id="password"
+            class="form-control"
+            type="password"
+            placeholder="Contraseña">
+
+        </div>
+
+        <button
+          class="btn btn-primary w-100"
+          onclick="login()">
+
+          <i class="bi bi-box-arrow-in-right"></i>
+
+          Entrar
+
+        </button>
+
+        <p
+          id="loginError"
+          class="text-danger mt-3 mb-0">
+        </p>
+
+      </div>
+
+    </div>
 
   </div>
 
   <!-- APP -->
-  <div id="appScreen" class="screen hidden">
 
-    <h2>Calculadora de Calorías</h2>
+  <div
+    id="appScreen"
+    class="screen hidden">
 
-    <div id="todayDate"></div>
+    <div class="app-card card shadow-sm">
 
-    <h3>Agregar alimento</h3>
+      <div class="card-body">
 
-    <label>Nombre del alimento</label>
+        <h2 class="mb-1">
 
-    <input
-      id="food"
-      list="foodSuggestions"
-      placeholder="Ej: Avena">
+          <i class="bi bi-fire"></i>
 
-    <datalist id="foodSuggestions"></datalist>
+          Calculadora de Calorías
 
-    <label>Kcal por 100g</label>
+        </h2>
 
-    <input
-      id="kcal100"
-      type="number"
-      placeholder="Ej: 350">
+        <div
+          id="todayDate"
+          class="text-muted mb-4">
+        </div>
 
-    <label>Gramos consumidos</label>
+        <!-- FORMULARIO -->
 
-    <input
-      id="grams"
-      type="number"
-      placeholder="Ej: 50">
+        <h3 class="h5 mb-3">
 
-    <button onclick="addFood()">
-      Agregar
-    </button>
+          <i class="bi bi-plus-circle"></i>
 
-    <h3>Registros</h3>
+          Agregar alimento
 
-    <div id="list"></div>
+        </h3>
 
-    <details id="foodsSection">
+        <div class="mb-3">
 
-  <summary>
-    Mis alimentos
-  </summary>
+          <label class="form-label">
 
-  <div id="foodList"></div>
+            Nombre del alimento
 
-</details>
+          </label>
 
-    <hr>
+          <input
+            id="food"
+            class="form-control"
+            list="foodSuggestions"
+            placeholder="Ej: Avena">
 
-    <h3>Total del día</h3>
+          <datalist
+            id="foodSuggestions">
+          </datalist>
 
-    <div id="total">0 kcal</div>
+        </div>
 
-    <button onclick="logout()">
-      Salir
-    </button>
+        <div class="mb-3">
+
+          <label class="form-label">
+
+            Kcal por 100g
+
+          </label>
+
+          <input
+            id="kcal100"
+            class="form-control"
+            type="number"
+            placeholder="Ej: 350">
+
+        </div>
+
+        <div class="mb-3">
+
+          <label class="form-label">
+
+            Gramos consumidos
+
+          </label>
+
+          <input
+            id="grams"
+            class="form-control"
+            type="number"
+            placeholder="Ej: 50">
+
+        </div>
+
+        <button
+          class="btn btn-primary w-100 mb-4"
+          onclick="addFood()">
+
+          <i class="bi bi-plus-lg"></i>
+
+          Agregar
+
+        </button>
+
+        <!-- MIS ALIMENTOS -->
+
+        <details
+          id="foodsSection"
+          class="mb-4">
+
+          <summary id="foodsSummary" class="fw-bold">
+          
+            <i class="bi bi-basket"></i>
+          
+            Mis alimentos (0)
+          
+          </summary>
+
+          <div
+            id="foodList"
+            class="mt-3">
+          </div>
+
+        </details>
+
+        <!-- REGISTROS -->
+
+        <h3 class="h5 mb-3">
+
+          <i class="bi bi-journal-text"></i>
+
+          Registros
+
+        </h3>
+
+        <div id="list"></div>
+
+        <hr>
+
+        <!-- TOTAL -->
+
+        <h3 class="h5">
+
+          <i class="bi bi-fire"></i>
+
+          Total del día
+
+        </h3>
+
+        <div
+          id="total"
+          class="fs-4 fw-bold mb-4">
+
+          0 kcal
+
+        </div>
+
+        <!-- SALIR -->
+
+        <button
+          class="btn btn-outline-secondary w-100"
+          onclick="logout()">
+
+          <i class="bi bi-box-arrow-right"></i>
+
+          Salir
+
+        </button>
+
+      </div>
+
+    </div>
 
   </div>
+
+  <!-- Bootstrap JS -->
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+  </script>
+
+  <!-- APP JS -->
 
   <script src="app.js"></script>
 
