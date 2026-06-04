@@ -1,51 +1,96 @@
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Calorías App</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <!-- LOGIN -->
-    <div id="loginScreen" class="screen">
-      <h2>Login</h2>
 
-      <input id="username" placeholder="Usuario" />
-      <input id="password" type="password" placeholder="Contraseña" />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calorías App</title>
 
-      <button onclick="login()">Entrar</button>
+  <link rel="stylesheet" href="styles.css">
+</head>
 
-      <p id="loginError"></p>
-    </div>
+<body>
 
-    <!-- APP -->
-    <div id="appScreen" class="screen hidden">
-      <h2>Calculadora de Calorías</h2>
+  <!-- LOGIN -->
+  <div id="loginScreen" class="screen">
 
-      <h3>Agregar alimento</h3>
+    <h2>Login</h2>
 
-      <label>Nombre del alimento</label>
-      <input id="food" placeholder="Ej: Avena" />
+    <input
+      id="username"
+      placeholder="Usuario">
 
-      <label>Kcal por 100g</label>
-      <input id="kcal100" placeholder="Ej: 350" />
+    <input
+      id="password"
+      type="password"
+      placeholder="Contraseña">
 
-      <label>Gramos consumidos</label>
-      <input id="grams" placeholder="Ej: 50" />
+    <button onclick="login()">
+      Entrar
+    </button>
 
-      <button onclick="addFood()">Agregar</button>
+    <p id="loginError"></p>
 
-      <h3>Registros</h3>
-      <div id="list"></div>
+  </div>
 
-      <hr />
+  <!-- APP -->
+  <div id="appScreen" class="screen hidden">
 
-      <h3>Total del día</h3>
-      <div id="total"></div>
+    <h2>Calculadora de Calorías</h2>
 
-      <button onclick="logout()">Salir</button>
-    </div>
+    <div id="todayDate"></div>
 
-    <script src="app.js"></script>
-  </body>
+    <h3>Agregar alimento</h3>
+
+    <label>Nombre del alimento</label>
+
+    <input
+      id="food"
+      list="foodSuggestions"
+      placeholder="Ej: Avena">
+
+    <datalist id="foodSuggestions"></datalist>
+
+    <label>Kcal por 100g</label>
+
+    <input
+      id="kcal100"
+      type="number"
+      placeholder="Ej: 350">
+
+    <label>Gramos consumidos</label>
+
+    <input
+      id="grams"
+      type="number"
+      placeholder="Ej: 50">
+
+    <button onclick="addFood()">
+      Agregar
+    </button>
+
+    <h3>Registros</h3>
+
+    <div id="list"></div>
+
+    <h3>Mis alimentos</h3>
+
+    <div id="foodList"></div>
+
+    <hr>
+
+    <h3>Total del día</h3>
+
+    <div id="total">0 kcal</div>
+
+    <button onclick="logout()">
+      Salir
+    </button>
+
+  </div>
+
+  <script src="app.js"></script>
+
+</body>
+
 </html>

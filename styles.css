@@ -1,14 +1,21 @@
+/* RESET BASE */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
   background: #f4f6f8;
   margin: 0;
-  padding: 15px;
+  padding: 0;
 }
 
+/* OCULTAR PANTALLAS */
 .hidden {
   display: none !important;
 }
 
+/* DESKTOP / BASE */
 .screen {
   max-width: 500px;
   margin: auto;
@@ -18,10 +25,12 @@ body {
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
+/* TÍTULOS */
 h2, h3 {
   margin-top: 10px;
 }
 
+/* LABELS */
 label {
   font-size: 13px;
   color: #555;
@@ -29,6 +38,7 @@ label {
   display: block;
 }
 
+/* INPUTS */
 input {
   width: 100%;
   padding: 12px;
@@ -36,9 +46,9 @@ input {
   border: 1px solid #ddd;
   border-radius: 8px;
   font-size: 14px;
-  box-sizing: border-box;
 }
 
+/* BOTONES */
 button {
   width: 100%;
   padding: 12px;
@@ -66,6 +76,7 @@ button:hover {
   margin-top: 10px;
 }
 
+/* DELETE BUTTON */
 .deleteBtn {
   background: red;
   width: auto;
@@ -73,18 +84,46 @@ button:hover {
   font-size: 12px;
 }
 
-/* MOBILE RESPONSIVE */
+/* TOTAL */
+#total {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+/* 📱 MOBILE ONLY */
 @media (max-width: 600px) {
+
+  body {
+    padding: 0;
+  }
+
   .screen {
-    padding: 15px;
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
     border-radius: 0;
+    min-height: 100vh;
+    box-shadow: none;
+    padding: 12px;
+  }
+
+  input {
+    font-size: 16px;
   }
 
   button {
     font-size: 16px;
   }
 
-  input {
-    font-size: 16px;
+  .item {
+    font-size: 14px;
   }
+}
+
+  #todayDate {
+  font-size: 16px;
+  color: #666;
+  margin-top: 4px;
+  margin-bottom: 10px;
 }
