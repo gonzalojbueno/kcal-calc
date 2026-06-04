@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Calorías App</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- LOGIN -->
+    <div id="loginScreen" class="screen">
+      <h2>Login</h2>
+
+      <input id="username" placeholder="Usuario" />
+      <input id="password" type="password" placeholder="Contraseña" />
+
+      <button onclick="login()">Entrar</button>
+
+      <p id="loginError"></p>
+    </div>
+
+    <!-- APP -->
+    <div id="appScreen" class="screen hidden">
+      <h2>Calculadora de Calorías</h2>
+
+      <h3>Agregar alimento</h3>
+
+      <label>Nombre del alimento</label>
+      <input id="food" placeholder="Ej: Avena" />
+
+      <label>Kcal por 100g</label>
+      <input id="kcal100" placeholder="Ej: 350" />
+
+      <label>Gramos consumidos</label>
+      <input id="grams" placeholder="Ej: 50" />
+
+      <button onclick="addFood()">Agregar</button>
+
+      <h3>Registros</h3>
+      <div id="list"></div>
+
+      <hr />
+
+      <h3>Total del día</h3>
+      <div id="total"></div>
+
+      <button onclick="logout()">Salir</button>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
