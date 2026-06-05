@@ -267,11 +267,18 @@ function clearInputs() {
 // BORRAR REGISTRO
 // =======================
 
-function deleteItem(index) {
-  registros.splice(index, 1);
+async function deleteItem(id) {
+  const { error } = await supabaseClient
+    .from("registros")
+    .delete()
+    .eq("id", id);
 
-  saveRegistros();
-  render();
+  if (error) {
+    console.error("Error borrando registro:", error);
+    return;
+  }
+
+  await loadRegistrosFromSupabase();
 }
 
 // =======================
@@ -359,7 +366,7 @@ function render() {
 
               <button
                 class="deleteBtn"
-                onclick="deleteItem(${r.originalIndex})">
+                onclick="deleteItem(${r.id})">
                 <i class="bi bi-trash3"></i>
               </button>
             </div>
