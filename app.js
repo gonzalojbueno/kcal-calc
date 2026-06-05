@@ -304,15 +304,91 @@ function render() {
     `;
   });
 
-  totalDiv.innerHTML = `
-    <div>${totalGeneral.toFixed(1)} kcal</div>
-    <div class="fs-6 fw-normal">
-      Proteína: ${totalProtein.toFixed(1)} g / 160 g<br>
-      Restante proteína: ${(160 - totalProtein).toFixed(1)} g<br>
-      Carbohidratos: ${totalCarbs.toFixed(1)} g<br>
-      Fibra: ${totalFiber.toFixed(1)} g
+const proteinGoal = 160;
+
+const proteinPercent =
+  Math.min(
+    (totalProtein / proteinGoal) * 100,
+    100
+  );
+
+let proteinBarColor = "bg-danger";
+
+if (proteinPercent >= 80) {
+  proteinBarColor = "bg-success";
+} else if (proteinPercent >= 50) {
+  proteinBarColor = "bg-warning";
+}
+
+totalDiv.innerHTML = `
+
+  <div class="fs-3 fw-bold mb-3">
+    ${totalGeneral.toFixed(1)} kcal
+  </div>
+
+  <div class="mb-2">
+
+    <strong>
+      Proteína:
+      ${totalProtein.toFixed(1)} g /
+      ${proteinGoal} g
+    </strong>
+
+  </div>
+
+  <div
+    class="progress mb-2"
+    style="height:30px;">
+
+    <div
+      class="progress-bar progress-bar-striped progress-bar-animated ${proteinBarColor}"
+
+      role="progressbar"
+
+      style="
+        width:${proteinPercent}%;
+      ">
+
+      ${proteinPercent.toFixed(0)}%
+
     </div>
-  `;
+
+  </div>
+
+  <div class="text-muted mb-3">
+
+    Restante:
+
+    ${Math.max(
+      proteinGoal - totalProtein,
+      0
+    ).toFixed(1)}
+
+    g
+
+  </div>
+
+  <hr>
+
+  <div>
+
+    Carbohidratos:
+    <strong>
+      ${totalCarbs.toFixed(1)} g
+    </strong>
+
+  </div>
+
+  <div>
+
+    Fibra:
+    <strong>
+      ${totalFiber.toFixed(1)} g
+    </strong>
+
+  </div>
+
+`;
 }
 
 // =======================
