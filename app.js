@@ -123,7 +123,22 @@ async function loadFoodsFromSupabase() {
     foods.length
   );
 }
+async function loadRegistrosFromSupabase() {
+  const { data, error } = await supabaseClient
+    .from("registros")
+    .select("*")
+    .order("created_at", { ascending: true });
 
+  if (error) {
+    console.error("Error cargando registros desde Supabase:", error);
+    return;
+  }
+
+  registros = data;
+  render();
+
+  console.log("Registros cargados:", registros.length);
+}
 // =======================
 // FORMATEAR FECHA
 // =======================
@@ -155,7 +170,7 @@ function formatDate(dateString) {
 // AGREGAR ALIMENTO
 // =======================
 
-function addFood() {
+async function addFood() {
   const food = document.getElementById("food").value.trim();
 
   const kcal100 = parseFloat(document.getElementById("kcal100").value);
@@ -215,11 +230,24 @@ function addFood() {
     renderFoods();
   }
 
-  registros.push(item);
+  const { error } =
+  await supabaseClient
+    .from("registros")
+    .insert([item]);
 
-  saveRegistros();
-  render();
-  clearInputs();
+if (error) {
+
+  console.error(
+    "Error guardando registro:",
+    error
+  );
+
+  return;
+}
+
+await loadRegistrosFromSupabase();
+
+clearInputs();
 }
 
 // =======================
@@ -535,6 +563,8 @@ window.addEventListener("load", async () => {
   setTodayDate();
 
   await loadFoodsFromSupabase();
+  await loadRegistrosFromSupabase();
+
   render();
   renderFoods();
 
