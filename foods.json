@@ -350,5 +350,13 @@
     "protein100": 2.8,
     "carbs100": 7,
     "fiber100": 2.6
-  }
+  },
+  {
+  "food": "Zapallo italiano",
+  "category": "Verduras",
+  "kcal100": 17,
+  "protein100": 1.2,
+  "carbs100": 3.1,
+  "fiber100": 1.0
+}
 ]

@@ -260,7 +260,7 @@ function render() {
     const totalItems = registrosPorFecha[fecha].length;
 
     list.innerHTML += `
-      <details class="dayGroup" open>
+      <details class="dayGroup">
         <summary>
           <i class="bi bi-calendar3"></i>
           ${formatDate(fecha)} —
