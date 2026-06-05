@@ -4,26 +4,21 @@
 <head>
 
   <meta charset="UTF-8">
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Calorías App</title>
 
   <!-- Bootstrap -->
-
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
     rel="stylesheet">
 
   <!-- Bootstrap Icons -->
-
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <!-- CSS APP -->
-
   <link
     rel="stylesheet"
     href="styles.css">
@@ -34,43 +29,31 @@
 
   <!-- LOGIN -->
 
-  <div
-    id="loginScreen"
-    class="screen">
+  <div id="loginScreen" class="screen">
 
     <div class="app-card card shadow-sm">
 
       <div class="card-body">
 
         <h2 class="mb-4">
-
           <i class="bi bi-person-circle"></i>
-
           Login
-
         </h2>
 
         <div class="mb-3">
-
           <label class="form-label">
-
             Usuario
-
           </label>
 
           <input
             id="username"
             class="form-control"
             placeholder="Usuario">
-
         </div>
 
         <div class="mb-3">
-
           <label class="form-label">
-
             Contraseña
-
           </label>
 
           <input
@@ -78,7 +61,6 @@
             class="form-control"
             type="password"
             placeholder="Contraseña">
-
         </div>
 
         <button
@@ -86,7 +68,6 @@
           onclick="login()">
 
           <i class="bi bi-box-arrow-in-right"></i>
-
           Entrar
 
         </button>
@@ -113,11 +94,8 @@
       <div class="card-body">
 
         <h2 class="mb-1">
-
           <i class="bi bi-fire"></i>
-
           Calculadora de Calorías
-
         </h2>
 
         <div
@@ -128,19 +106,14 @@
         <!-- FORMULARIO -->
 
         <h3 class="h5 mb-3">
-
           <i class="bi bi-plus-circle"></i>
-
           Agregar alimento
-
         </h3>
 
         <div class="mb-3">
 
           <label class="form-label">
-
             Nombre del alimento
-
           </label>
 
           <input
@@ -149,18 +122,14 @@
             list="foodSuggestions"
             placeholder="Ej: Avena">
 
-          <datalist
-            id="foodSuggestions">
-          </datalist>
+          <datalist id="foodSuggestions"></datalist>
 
         </div>
 
         <div class="mb-3">
 
           <label class="form-label">
-
             Kcal por 100g
-
           </label>
 
           <input
@@ -174,9 +143,49 @@
         <div class="mb-3">
 
           <label class="form-label">
+            Proteína por 100g
+          </label>
 
+          <input
+            id="protein100"
+            class="form-control"
+            type="number"
+            placeholder="Ej: 13">
+
+        </div>
+
+        <div class="mb-3">
+
+          <label class="form-label">
+            Carbohidratos por 100g
+          </label>
+
+          <input
+            id="carbs100"
+            class="form-control"
+            type="number"
+            placeholder="Ej: 60">
+
+        </div>
+
+        <div class="mb-3">
+
+          <label class="form-label">
+            Fibra por 100g
+          </label>
+
+          <input
+            id="fiber100"
+            class="form-control"
+            type="number"
+            placeholder="Ej: 10">
+
+        </div>
+
+        <div class="mb-3">
+
+          <label class="form-label">
             Gramos consumidos
-
           </label>
 
           <input
@@ -192,7 +201,6 @@
           onclick="addFood()">
 
           <i class="bi bi-plus-lg"></i>
-
           Agregar
 
         </button>
@@ -203,12 +211,13 @@
           id="foodsSection"
           class="mb-4">
 
-          <summary id="foodsSummary" class="fw-bold">
-          
+          <summary
+            id="foodsSummary"
+            class="fw-bold">
+
             <i class="bi bi-basket"></i>
-          
             Mis alimentos (0)
-          
+
           </summary>
 
           <div
@@ -223,7 +232,6 @@
         <h3 class="h5 mb-3">
 
           <i class="bi bi-journal-text"></i>
-
           Registros
 
         </h3>
@@ -237,7 +245,6 @@
         <h3 class="h5">
 
           <i class="bi bi-fire"></i>
-
           Total del día
 
         </h3>
@@ -257,7 +264,6 @@
           onclick="logout()">
 
           <i class="bi bi-box-arrow-right"></i>
-
           Salir
 
         </button>

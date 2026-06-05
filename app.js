@@ -88,22 +88,43 @@ function formatDate(dateString) {
 
 function addFood() {
   const food = document.getElementById("food").value.trim();
+
   const kcal100 = parseFloat(document.getElementById("kcal100").value);
+  const protein100 = parseFloat(document.getElementById("protein100").value);
+  const carbs100 = parseFloat(document.getElementById("carbs100").value);
+  const fiber100 = parseFloat(document.getElementById("fiber100").value);
   const grams = parseFloat(document.getElementById("grams").value);
 
-  if (!food || isNaN(kcal100) || isNaN(grams)) {
+  if (
+    !food ||
+    isNaN(kcal100) ||
+    isNaN(protein100) ||
+    isNaN(carbs100) ||
+    isNaN(fiber100) ||
+    isNaN(grams)
+  ) {
     alert("Completa todos los campos");
     return;
   }
 
   const kcal = (grams * kcal100) / 100;
+  const protein = (grams * protein100) / 100;
+  const carbs = (grams * carbs100) / 100;
+  const fiber = (grams * fiber100) / 100;
+
   const now = new Date();
 
   const item = {
     food,
     grams,
     kcal100,
+    protein100,
+    carbs100,
+    fiber100,
     kcal,
+    protein,
+    carbs,
+    fiber,
     date: now.toLocaleDateString("es-CL"),
     time: now.toLocaleTimeString("es-CL")
   };
@@ -115,7 +136,10 @@ function addFood() {
   if (!exists) {
     foods.push({
       food,
-      kcal100
+      kcal100,
+      protein100,
+      carbs100,
+      fiber100
     });
 
     saveFoods();
@@ -136,6 +160,9 @@ function addFood() {
 function clearInputs() {
   document.getElementById("food").value = "";
   document.getElementById("kcal100").value = "";
+  document.getElementById("protein100").value = "";
+  document.getElementById("carbs100").value = "";
+  document.getElementById("fiber100").value = "";
   document.getElementById("grams").value = "";
 }
 
@@ -161,10 +188,17 @@ function render() {
   list.innerHTML = "";
 
   let totalGeneral = 0;
+  let totalProtein = 0;
+  let totalCarbs = 0;
+  let totalFiber = 0;
+
   const registrosPorFecha = {};
 
   registros.forEach((r, index) => {
-    totalGeneral += r.kcal;
+    totalGeneral += r.kcal || 0;
+    totalProtein += r.protein || 0;
+    totalCarbs += r.carbs || 0;
+    totalFiber += r.fiber || 0;
 
     if (!registrosPorFecha[r.date]) {
       registrosPorFecha[r.date] = [];
@@ -180,16 +214,27 @@ function render() {
 
   fechas.forEach(fecha => {
     let totalFecha = 0;
+    let proteinFecha = 0;
+    let carbsFecha = 0;
+    let fiberFecha = 0;
 
     registrosPorFecha[fecha].forEach(r => {
-      totalFecha += r.kcal;
+      totalFecha += r.kcal || 0;
+      proteinFecha += r.protein || 0;
+      carbsFecha += r.carbs || 0;
+      fiberFecha += r.fiber || 0;
     });
+
+    const totalItems = registrosPorFecha[fecha].length;
 
     list.innerHTML += `
       <details class="dayGroup" open>
         <summary>
           <i class="bi bi-calendar3"></i>
-          ${formatDate(fecha)} — ${totalFecha.toFixed(1)} kcal
+          ${formatDate(fecha)} —
+          ${totalFecha.toFixed(1)} kcal ·
+          ${proteinFecha.toFixed(1)} g proteína ·
+          ${totalItems} registros
         </summary>
 
         <div class="dayItems">
@@ -200,10 +245,17 @@ function render() {
 
                 Cantidad: ${r.grams} g<br>
 
-                100 g = ${r.kcal100} kcal<br>
+                Kcal:
+                <strong>${(r.kcal || 0).toFixed(1)}</strong><br>
 
-                Consumidas:
-                <strong>${r.kcal.toFixed(1)} kcal</strong><br>
+                Proteína:
+                <strong>${(r.protein || 0).toFixed(1)} g</strong><br>
+
+                Carbohidratos:
+                <strong>${(r.carbs || 0).toFixed(1)} g</strong><br>
+
+                Fibra:
+                <strong>${(r.fiber || 0).toFixed(1)} g</strong><br>
 
                 <small>${r.time}</small>
               </div>
@@ -220,7 +272,15 @@ function render() {
     `;
   });
 
-  totalDiv.innerText = totalGeneral.toFixed(1) + " kcal";
+  totalDiv.innerHTML = `
+    <div>${totalGeneral.toFixed(1)} kcal</div>
+    <div class="fs-6 fw-normal">
+      Proteína: ${totalProtein.toFixed(1)} g / 160 g<br>
+      Restante proteína: ${(160 - totalProtein).toFixed(1)} g<br>
+      Carbohidratos: ${totalCarbs.toFixed(1)} g<br>
+      Fibra: ${totalFiber.toFixed(1)} g
+    </div>
+  `;
 }
 
 // =======================
@@ -228,37 +288,21 @@ function render() {
 // =======================
 
 function renderFoods() {
+  const foodList = document.getElementById("foodList");
+  const suggestions = document.getElementById("foodSuggestions");
+  const foodsSummary = document.getElementById("foodsSummary");
 
-  const foodList =
-    document.getElementById(
-      "foodList"
-    );
-
-  const suggestions =
-    document.getElementById(
-      "foodSuggestions"
-    );
-
-  const foodsSummary =
-    document.getElementById(
-      "foodsSummary"
-    );
-
-  if (
-    !foodList ||
-    !suggestions
-  ) return;
+  if (!foodList || !suggestions) return;
 
   foodList.innerHTML = "";
   suggestions.innerHTML = "";
 
   if (foodsSummary) {
-
-  foodsSummary.innerHTML = `
-    <i class="bi bi-basket"></i>
-    Mis alimentos (${foods.length})
-  `;
-}
+    foodsSummary.innerHTML = `
+      <i class="bi bi-basket"></i>
+      Mis alimentos (${foods.length})
+    `;
+  }
 
   foods.forEach((food, index) => {
     suggestions.innerHTML += `
@@ -269,7 +313,10 @@ function renderFoods() {
       <div class="item">
         <div>
           <strong>${food.food}</strong><br>
-          ${food.kcal100} kcal / 100g
+          ${food.kcal100 ?? 0} kcal / 100g<br>
+          Proteína: ${food.protein100 ?? 0} g<br>
+          Carbohidratos: ${food.carbs100 ?? 0} g<br>
+          Fibra: ${food.fiber100 ?? 0} g
         </div>
 
         <button
@@ -312,7 +359,10 @@ function fillFoodData() {
 
   if (!found) return;
 
-  document.getElementById("kcal100").value = found.kcal100;
+  document.getElementById("kcal100").value = found.kcal100 ?? "";
+  document.getElementById("protein100").value = found.protein100 ?? "";
+  document.getElementById("carbs100").value = found.carbs100 ?? "";
+  document.getElementById("fiber100").value = found.fiber100 ?? "";
 }
 
 // =======================
