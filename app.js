@@ -55,6 +55,38 @@ function saveRegistros() {
   localStorage.setItem("registros", JSON.stringify(registros));
 }
 
+async function loadDefaultFoods() {
+
+  const hasFoods =
+    localStorage.getItem("foods");
+
+  if (hasFoods) {
+    return;
+  }
+
+  try {
+
+    const response =
+      await fetch("foods.json");
+
+    const defaultFoods =
+      await response.json();
+
+    foods = defaultFoods;
+
+    saveFoods();
+
+    renderFoods();
+
+  } catch (error) {
+
+    console.error(
+      "Error cargando foods.json:",
+      error
+    );
+  }
+}
+
 // =======================
 // FORMATEAR FECHA
 // =======================
@@ -386,9 +418,10 @@ function setTodayDate() {
 // INIT
 // =======================
 
-window.addEventListener("load", () => {
+window.addEventListener("load", async () => {
   setTodayDate();
 
+  await loadDefaultFoods();
   render();
   renderFoods();
 
