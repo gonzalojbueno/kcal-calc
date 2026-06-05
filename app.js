@@ -1,3 +1,15 @@
+// const SUPABASE_URL =
+ // "MY_SUPABASE_URL";
+
+// const SUPABASE_KEY =
+//  "MY_SUPABASE_KEY";
+
+ // const supabase =
+ // window.supabase.createClient(
+  //  SUPABASE_URL,
+  //  SUPABASE_KEY
+ // );
+
 // =======================
 // LOGIN SIMPLE
 // =======================
