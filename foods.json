@@ -1,377 +1,354 @@
-{
-  "food": "Huevo duro",
-  "category": "Proteínas",
-  "kcal100": 140,
-  "protein100": 13,
-  "carbs100": 1,
-  "fiber100": 0
-},
-{
-  "food": "Jamón Pierna",
-  "category": "Proteínas",
-  "kcal100": 110,
-  "protein100": 18,
-  "carbs100": 2,
-  "fiber100": 0
-},
-{
-  "food": "Pan de molde integral",
-  "category": "Carbohidratos",
-  "kcal100": 260,
-  "protein100": 9,
-  "carbs100": 50,
-  "fiber100": 4
-},
-{
-  "food": "Palta",
-  "category": "Grasas",
-  "kcal100": 160,
-  "protein100": 2,
-  "carbs100": 9,
-  "fiber100": 7
-},
-{
-  "food": "Yogur natural",
-  "category": "Lácteos",
-  "kcal100": 69,
-  "protein100": 3.5,
-  "carbs100": 5,
-  "fiber100": 0
-},
-{
-  "food": "Frutos secos mix",
-  "category": "Grasas",
-  "kcal100": 440,
-  "protein100": 16,
-  "carbs100": 21,
-  "fiber100": 8
-},
-{
-  "food": "Arroz blanco cocido",
-  "category": "Carbohidratos",
-  "kcal100": 125,
-  "protein100": 2.5,
-  "carbs100": 28,
-  "fiber100": 0.4
-},
-{
-  "food": "Pollo cocido",
-  "category": "Proteínas",
-  "kcal100": 185,
-  "protein100": 30,
-  "carbs100": 0,
-  "fiber100": 0
-},
-{
-  "food": "Plátano",
-  "category": "Frutas",
-  "kcal100": 89,
-  "protein100": 1.1,
-  "carbs100": 23,
-  "fiber100": 2.6
-},
-{
-  "food": "Tomate",
-  "category": "Verduras",
-  "kcal100": 18,
-  "protein100": 0.9,
-  "carbs100": 3.9,
-  "fiber100": 1.2
-},
-{
-  "food": "Pepino",
-  "category": "Verduras",
-  "kcal100": 16,
-  "protein100": 0.7,
-  "carbs100": 3.6,
-  "fiber100": 0.5
-},
-{
-  "food": "Diente de dragón",
-  "category": "Verduras",
-  "kcal100": 67,
-  "protein100": 5,
-  "carbs100": 13,
-  "fiber100": 2
-},
-{
-  "food": "Leche semidescremada",
-  "category": "Lácteos",
-  "kcal100": 47,
-  "protein100": 3.3,
-  "carbs100": 4.8,
-  "fiber100": 0
-},
-{
-  "food": "Avena cocida",
-  "category": "Carbohidratos",
-  "kcal100": 71,
-  "protein100": 2.5,
-  "carbs100": 12,
-  "fiber100": 1.7
-},
-{
-  "food": "Queso Mantecoso",
-  "category": "Lácteos",
-  "kcal100": 340,
-  "protein100": 22,
-  "carbs100": 2,
-  "fiber100": 0
-},
-{
-  "food": "Champiñones",
-  "category": "Verduras",
-  "kcal100": 22,
-  "protein100": 3.1,
-  "carbs100": 3.3,
-  "fiber100": 1
-},
-{
-  "food": "Aceite oliva",
-  "category": "Grasas",
-  "kcal100": 884,
-  "protein100": 0,
-  "carbs100": 0,
-  "fiber100": 0
-},
-{
-  "food": "Arroz integral cocido",
-  "category": "Carbohidratos",
-  "kcal100": 123,
-  "protein100": 2.7,
-  "carbs100": 25.6,
-  "fiber100": 1.8
-},
-{
-  "food": "Salmón",
-  "category": "Proteínas",
-  "kcal100": 208,
-  "protein100": 22,
-  "carbs100": 0,
-  "fiber100": 0
-},
-{
-  "food": "Merluza",
-  "category": "Proteínas",
-  "kcal100": 90,
-  "protein100": 18,
-  "carbs100": 0,
-  "fiber100": 0
-},
-{
-  "food": "Porotos verdes",
-  "category": "Verduras",
-  "kcal100": 31,
-  "protein100": 1.8,
-  "carbs100": 7,
-  "fiber100": 3.4
-},
-{
-  "food": "Brócoli",
-  "category": "Verduras",
-  "kcal100": 34,
-  "protein100": 2.8,
-  "carbs100": 7,
-  "fiber100": 2.6
-},
-,
-{
-  "food": "Pavo cocido",
-  "category": "Proteínas",
-  "kcal100": 135,
-  "protein100": 29,
-  "carbs100": 0,
-  "fiber100": 0
-},
-{
-  "food": "Atún al agua",
-  "category": "Proteínas",
-  "kcal100": 116,
-  "protein100": 26,
-  "carbs100": 0,
-  "fiber100": 0
-},
-{
-  "food": "Jurel al natural",
-  "category": "Proteínas",
-  "kcal100": 140,
-  "protein100": 24,
-  "carbs100": 0,
-  "fiber100": 0
-},
-{
-  "food": "Carne vacuno magra cocida",
-  "category": "Proteínas",
-  "kcal100": 250,
-  "protein100": 26,
-  "carbs100": 0,
-  "fiber100": 0
-},
-{
-  "food": "Quesillo",
-  "category": "Lácteos",
-  "kcal100": 110,
-  "protein100": 13,
-  "carbs100": 3,
-  "fiber100": 0
-},
-{
-  "food": "Yogur griego natural",
-  "category": "Lácteos",
-  "kcal100": 90,
-  "protein100": 10,
-  "carbs100": 4,
-  "fiber100": 0
-},
-{
-  "food": "Clara de huevo",
-  "category": "Proteínas",
-  "kcal100": 52,
-  "protein100": 11,
-  "carbs100": 1,
-  "fiber100": 0
-},
-{
-  "food": "Lentejas cocidas",
-  "category": "Legumbres",
-  "kcal100": 117,
-  "protein100": 9,
-  "carbs100": 20,
-  "fiber100": 8
-},
-{
-  "food": "Garbanzos cocidos",
-  "category": "Legumbres",
-  "kcal100": 164,
-  "protein100": 9,
-  "carbs100": 27,
-  "fiber100": 7.6
-},
-{
-  "food": "Porotos cocidos",
-  "category": "Legumbres",
-  "kcal100": 127,
-  "protein100": 8.7,
-  "carbs100": 23,
-  "fiber100": 6.4
-},
-{
-  "food": "Avena cruda",
-  "category": "Carbohidratos",
-  "kcal100": 350,
-  "protein100": 13,
-  "carbs100": 60,
-  "fiber100": 10
-},
-{
-  "food": "Pan integral",
-  "category": "Carbohidratos",
-  "kcal100": 240,
-  "protein100": 10,
-  "carbs100": 45,
-  "fiber100": 7
-},
-{
-  "food": "Carne molida vacuno 10% grasa",
-  "category": "Proteínas",
-  "kcal100": 217,
-  "protein100": 26,
-  "carbs100": 0,
-  "fiber100": 0
-},
-{
-  "food": "Carne molida vacuno 4% grasa",
-  "category": "Proteínas",
-  "kcal100": 170,
-  "protein100": 27,
-  "carbs100": 0,
-  "fiber100": 0
-},
-{
-  "food": "Choclo congelado",
-  "category": "Carbohidratos",
-  "kcal100": 96,
-  "protein100": 3.4,
-  "carbs100": 21,
-  "fiber100": 2.4
-},
-{
-  "food": "Pechuga de pavo laminada",
-  "category": "Proteínas",
-  "kcal100": 105,
-  "protein100": 21,
-  "carbs100": 2,
-  "fiber100": 0
-},
-{
-  "food": "Pechuga de pollo desmenuzada",
-  "category": "Proteínas",
-  "kcal100": 165,
-  "protein100": 31,
-  "carbs100": 0,
-  "fiber100": 0
-},
-{
-  "food": "Jurel en tarro",
-  "category": "Proteínas",
-  "kcal100": 140,
-  "protein100": 24,
-  "carbs100": 0,
-  "fiber100": 0
-},
-{
-  "food": "Atún en agua",
-  "category": "Proteínas",
-  "kcal100": 116,
-  "protein100": 26,
-  "carbs100": 0,
-  "fiber100": 0
-},
-{
-  "food": "Quesillo",
-  "category": "Lácteos",
-  "kcal100": 110,
-  "protein100": 13,
-  "carbs100": 3,
-  "fiber100": 0
-},
-{
-  "food": "Ricotta light",
-  "category": "Lácteos",
-  "kcal100": 138,
-  "protein100": 11,
-  "carbs100": 4,
-  "fiber100": 0
-},
-{
-  "food": "Leche protein",
-  "category": "Lácteos",
-  "kcal100": 60,
-  "protein100": 10,
-  "carbs100": 4,
-  "fiber100": 0
-},
-{
-  "food": "Yogur griego protein",
-  "category": "Lácteos",
-  "kcal100": 75,
-  "protein100": 10,
-  "carbs100": 4,
-  "fiber100": 0
-},
-{
-  "food": "Porotos negros cocidos",
-  "category": "Legumbres",
-  "kcal100": 132,
-  "protein100": 8.9,
-  "carbs100": 24,
-  "fiber100": 8.7
-},
-{
-  "food": "Quinoa cocida",
-  "category": "Carbohidratos",
-  "kcal100": 120,
-  "protein100": 4.4,
-  "carbs100": 21,
-  "fiber100": 2.8
-}
+[
+  {
+    "food": "Huevo duro",
+    "category": "Proteínas",
+    "kcal100": 140,
+    "protein100": 13,
+    "carbs100": 1,
+    "fiber100": 0
+  },
+  {
+    "food": "Clara de huevo",
+    "category": "Proteínas",
+    "kcal100": 52,
+    "protein100": 11,
+    "carbs100": 1,
+    "fiber100": 0
+  },
+  {
+    "food": "Pollo cocido",
+    "category": "Proteínas",
+    "kcal100": 185,
+    "protein100": 30,
+    "carbs100": 0,
+    "fiber100": 0
+  },
+  {
+    "food": "Pechuga de pollo desmenuzada",
+    "category": "Proteínas",
+    "kcal100": 165,
+    "protein100": 31,
+    "carbs100": 0,
+    "fiber100": 0
+  },
+  {
+    "food": "Pavo cocido",
+    "category": "Proteínas",
+    "kcal100": 135,
+    "protein100": 29,
+    "carbs100": 0,
+    "fiber100": 0
+  },
+  {
+    "food": "Pechuga de pavo laminada",
+    "category": "Proteínas",
+    "kcal100": 105,
+    "protein100": 21,
+    "carbs100": 2,
+    "fiber100": 0
+  },
+  {
+    "food": "Jamón Pierna",
+    "category": "Proteínas",
+    "kcal100": 110,
+    "protein100": 18,
+    "carbs100": 2,
+    "fiber100": 0
+  },
+  {
+    "food": "Atún al agua",
+    "category": "Proteínas",
+    "kcal100": 116,
+    "protein100": 26,
+    "carbs100": 0,
+    "fiber100": 0
+  },
+  {
+    "food": "Jurel al natural",
+    "category": "Proteínas",
+    "kcal100": 140,
+    "protein100": 24,
+    "carbs100": 0,
+    "fiber100": 0
+  },
+  {
+    "food": "Salmón",
+    "category": "Proteínas",
+    "kcal100": 208,
+    "protein100": 22,
+    "carbs100": 0,
+    "fiber100": 0
+  },
+  {
+    "food": "Merluza",
+    "category": "Proteínas",
+    "kcal100": 90,
+    "protein100": 18,
+    "carbs100": 0,
+    "fiber100": 0
+  },
+  {
+    "food": "Carne vacuno magra cocida",
+    "category": "Proteínas",
+    "kcal100": 250,
+    "protein100": 26,
+    "carbs100": 0,
+    "fiber100": 0
+  },
+  {
+    "food": "Carne molida vacuno 10% grasa",
+    "category": "Proteínas",
+    "kcal100": 217,
+    "protein100": 26,
+    "carbs100": 0,
+    "fiber100": 0
+  },
+  {
+    "food": "Carne molida vacuno 4% grasa",
+    "category": "Proteínas",
+    "kcal100": 170,
+    "protein100": 27,
+    "carbs100": 0,
+    "fiber100": 0
+  },
+  {
+    "food": "Quesillo",
+    "category": "Lácteos",
+    "kcal100": 110,
+    "protein100": 13,
+    "carbs100": 3,
+    "fiber100": 0
+  },
+  {
+    "food": "Queso Mantecoso",
+    "category": "Lácteos",
+    "kcal100": 340,
+    "protein100": 22,
+    "carbs100": 2,
+    "fiber100": 0
+  },
+  {
+    "food": "Ricotta light",
+    "category": "Lácteos",
+    "kcal100": 138,
+    "protein100": 11,
+    "carbs100": 4,
+    "fiber100": 0
+  },
+  {
+    "food": "Yogur natural",
+    "category": "Lácteos",
+    "kcal100": 69,
+    "protein100": 3.5,
+    "carbs100": 5,
+    "fiber100": 0
+  },
+  {
+    "food": "Yogur griego natural",
+    "category": "Lácteos",
+    "kcal100": 90,
+    "protein100": 10,
+    "carbs100": 4,
+    "fiber100": 0
+  },
+  {
+    "food": "Yogur griego protein",
+    "category": "Lácteos",
+    "kcal100": 75,
+    "protein100": 10,
+    "carbs100": 4,
+    "fiber100": 0
+  },
+  {
+    "food": "Leche semidescremada",
+    "category": "Lácteos",
+    "kcal100": 47,
+    "protein100": 3.3,
+    "carbs100": 4.8,
+    "fiber100": 0
+  },
+  {
+    "food": "Leche protein",
+    "category": "Lácteos",
+    "kcal100": 60,
+    "protein100": 10,
+    "carbs100": 4,
+    "fiber100": 0
+  },
+  {
+    "food": "Avena cruda",
+    "category": "Carbohidratos",
+    "kcal100": 350,
+    "protein100": 13,
+    "carbs100": 60,
+    "fiber100": 10
+  },
+  {
+    "food": "Avena cocida",
+    "category": "Carbohidratos",
+    "kcal100": 71,
+    "protein100": 2.5,
+    "carbs100": 12,
+    "fiber100": 1.7
+  },
+  {
+    "food": "Arroz blanco cocido",
+    "category": "Carbohidratos",
+    "kcal100": 125,
+    "protein100": 2.5,
+    "carbs100": 28,
+    "fiber100": 0.4
+  },
+  {
+    "food": "Arroz integral cocido",
+    "category": "Carbohidratos",
+    "kcal100": 123,
+    "protein100": 2.7,
+    "carbs100": 25.6,
+    "fiber100": 1.8
+  },
+  {
+    "food": "Quinoa cocida",
+    "category": "Carbohidratos",
+    "kcal100": 120,
+    "protein100": 4.4,
+    "carbs100": 21,
+    "fiber100": 2.8
+  },
+  {
+    "food": "Pan integral",
+    "category": "Carbohidratos",
+    "kcal100": 240,
+    "protein100": 10,
+    "carbs100": 45,
+    "fiber100": 7
+  },
+  {
+    "food": "Pan de molde integral",
+    "category": "Carbohidratos",
+    "kcal100": 260,
+    "protein100": 9,
+    "carbs100": 50,
+    "fiber100": 4
+  },
+  {
+    "food": "Choclo congelado",
+    "category": "Carbohidratos",
+    "kcal100": 96,
+    "protein100": 3.4,
+    "carbs100": 21,
+    "fiber100": 2.4
+  },
+  {
+    "food": "Lentejas cocidas",
+    "category": "Legumbres",
+    "kcal100": 117,
+    "protein100": 9,
+    "carbs100": 20,
+    "fiber100": 8
+  },
+  {
+    "food": "Garbanzos cocidos",
+    "category": "Legumbres",
+    "kcal100": 164,
+    "protein100": 9,
+    "carbs100": 27,
+    "fiber100": 7.6
+  },
+  {
+    "food": "Porotos cocidos",
+    "category": "Legumbres",
+    "kcal100": 127,
+    "protein100": 8.7,
+    "carbs100": 23,
+    "fiber100": 6.4
+  },
+  {
+    "food": "Porotos negros cocidos",
+    "category": "Legumbres",
+    "kcal100": 132,
+    "protein100": 8.9,
+    "carbs100": 24,
+    "fiber100": 8.7
+  },
+  {
+    "food": "Plátano",
+    "category": "Frutas",
+    "kcal100": 89,
+    "protein100": 1.1,
+    "carbs100": 23,
+    "fiber100": 2.6
+  },
+  {
+    "food": "Palta",
+    "category": "Grasas",
+    "kcal100": 160,
+    "protein100": 2,
+    "carbs100": 9,
+    "fiber100": 7
+  },
+  {
+    "food": "Frutos secos mix",
+    "category": "Grasas",
+    "kcal100": 440,
+    "protein100": 16,
+    "carbs100": 21,
+    "fiber100": 8
+  },
+  {
+    "food": "Aceite oliva",
+    "category": "Grasas",
+    "kcal100": 884,
+    "protein100": 0,
+    "carbs100": 0,
+    "fiber100": 0
+  },
+  {
+    "food": "Tomate",
+    "category": "Verduras",
+    "kcal100": 18,
+    "protein100": 0.9,
+    "carbs100": 3.9,
+    "fiber100": 1.2
+  },
+  {
+    "food": "Pepino",
+    "category": "Verduras",
+    "kcal100": 16,
+    "protein100": 0.7,
+    "carbs100": 3.6,
+    "fiber100": 0.5
+  },
+  {
+    "food": "Diente de dragón",
+    "category": "Verduras",
+    "kcal100": 67,
+    "protein100": 5,
+    "carbs100": 13,
+    "fiber100": 2
+  },
+  {
+    "food": "Champiñones",
+    "category": "Verduras",
+    "kcal100": 22,
+    "protein100": 3.1,
+    "carbs100": 3.3,
+    "fiber100": 1
+  },
+  {
+    "food": "Porotos verdes",
+    "category": "Verduras",
+    "kcal100": 31,
+    "protein100": 1.8,
+    "carbs100": 7,
+    "fiber100": 3.4
+  },
+  {
+    "food": "Brócoli",
+    "category": "Verduras",
+    "kcal100": 34,
+    "protein100": 2.8,
+    "carbs100": 7,
+    "fiber100": 2.6
+  }
+]
