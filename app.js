@@ -1,14 +1,12 @@
-// const SUPABASE_URL =
- // "MY_SUPABASE_URL";
+const SUPABASE_URL = "https://keedcfgnbsxdyabipegl.supabase.co";
+const SUPABASE_KEY = "sb_publishable_6p8CXnzlxkc5NpyNnnQpvA_LzsqCv5s";
 
-// const SUPABASE_KEY =
-//  "MY_SUPABASE_KEY";
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
- // const supabase =
- // window.supabase.createClient(
-  //  SUPABASE_URL,
-  //  SUPABASE_KEY
- // );
+console.log("Supabase conectado");
 
 // =======================
 // LOGIN SIMPLE
@@ -97,6 +95,33 @@ async function loadDefaultFoods() {
       error
     );
   }
+}
+async function loadFoodsFromSupabase() {
+
+  const { data, error } =
+    await supabaseClient
+      .from("foods")
+      .select("*")
+      .order("food");
+
+  if (error) {
+
+    console.error(
+      "Error cargando foods desde Supabase:",
+      error
+    );
+
+    return;
+  }
+
+  foods = data;
+
+  renderFoods();
+
+  console.log(
+    "Foods cargados:",
+    foods.length
+  );
 }
 
 // =======================
@@ -509,7 +534,7 @@ function setTodayDate() {
 window.addEventListener("load", async () => {
   setTodayDate();
 
-  await loadDefaultFoods();
+  await loadFoodsFromSupabase();
   render();
   renderFoods();
 
