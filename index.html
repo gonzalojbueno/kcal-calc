@@ -9,19 +9,13 @@
   <title>Calorías App</title>
 
   <!-- Bootstrap -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Bootstrap Icons -->
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <!-- CSS APP -->
-  <link
-    rel="stylesheet"
-    href="styles.css">
+  <link rel="stylesheet" href="styles.css">
 
 </head>
 
@@ -45,10 +39,7 @@
             Usuario
           </label>
 
-          <input
-            id="username"
-            class="form-control"
-            placeholder="Usuario">
+          <input id="username" class="form-control" placeholder="Usuario">
         </div>
 
         <div class="mb-3">
@@ -56,25 +47,17 @@
             Contraseña
           </label>
 
-          <input
-            id="password"
-            class="form-control"
-            type="password"
-            placeholder="Contraseña">
+          <input id="password" class="form-control" type="password" placeholder="Contraseña">
         </div>
 
-        <button
-          class="btn btn-primary w-100"
-          onclick="login()">
+        <button class="btn btn-primary w-100" onclick="login()">
 
           <i class="bi bi-box-arrow-in-right"></i>
           Entrar
 
         </button>
 
-        <p
-          id="loginError"
-          class="text-danger mt-3 mb-0">
+        <p id="loginError" class="text-danger mt-3 mb-0">
         </p>
 
       </div>
@@ -85,9 +68,7 @@
 
   <!-- APP -->
 
-  <div
-    id="appScreen"
-    class="screen hidden">
+  <div id="appScreen" class="screen hidden">
 
     <div class="app-card card shadow-sm">
 
@@ -98,9 +79,7 @@
           Calculadora de Calorías
         </h2>
 
-        <div
-          id="todayDate"
-          class="text-muted mb-4">
+        <div id="todayDate" class="text-muted mb-4">
         </div>
 
         <!-- FORMULARIO -->
@@ -116,13 +95,21 @@
             Nombre del alimento
           </label>
 
-          <input
-            id="food"
-            class="form-control"
-            list="foodSuggestions"
-            placeholder="Ej: Avena">
+          <input id="food" class="form-control" list="foodSuggestions" placeholder="Ej: Avena">
 
           <datalist id="foodSuggestions"></datalist>
+
+        </div>
+
+        <div class="mb-3 p-3 border border-success rounded bg-light">
+
+          <label class="form-label fw-bold text-success">
+
+            Grs consumidos
+
+          </label>
+
+          <input id="grams" class="form-control border-success border-2" type="number" placeholder="Ej: 150">
 
         </div>
 
@@ -132,11 +119,7 @@
             Kcal por 100g
           </label>
 
-          <input
-            id="kcal100"
-            class="form-control"
-            type="number"
-            placeholder="Ej: 350">
+          <input id="kcal100" class="form-control" type="number" placeholder="Ej: 350">
 
         </div>
 
@@ -146,11 +129,7 @@
             Proteína por 100g
           </label>
 
-          <input
-            id="protein100"
-            class="form-control"
-            type="number"
-            placeholder="Ej: 13">
+          <input id="protein100" class="form-control" type="number" placeholder="Ej: 13">
 
         </div>
 
@@ -160,11 +139,7 @@
             Carbohidratos por 100g
           </label>
 
-          <input
-            id="carbs100"
-            class="form-control"
-            type="number"
-            placeholder="Ej: 60">
+          <input id="carbs100" class="form-control" type="number" placeholder="Ej: 60">
 
         </div>
 
@@ -174,31 +149,12 @@
             Fibra por 100g
           </label>
 
-          <input
-            id="fiber100"
-            class="form-control"
-            type="number"
-            placeholder="Ej: 10">
+          <input id="fiber100" class="form-control" type="number" placeholder="Ej: 10">
 
         </div>
 
-        <div class="mb-3">
 
-          <label class="form-label">
-            Gramos consumidos
-          </label>
-
-          <input
-            id="grams"
-            class="form-control"
-            type="number"
-            placeholder="Ej: 50">
-
-        </div>
-
-        <button
-          class="btn btn-primary w-100 mb-4"
-          onclick="addFood()">
+        <button class="btn btn-primary w-100 mb-4" onclick="addFood()">
 
           <i class="bi bi-plus-lg"></i>
           Agregar
@@ -207,22 +163,16 @@
 
         <!-- MIS ALIMENTOS -->
 
-        <details
-          id="foodsSection"
-          class="mb-4">
+        <details id="foodsSection" class="mb-4">
 
-          <summary
-            id="foodsSummary"
-            class="fw-bold">
+          <summary id="foodsSummary" class="fw-bold">
 
             <i class="bi bi-basket"></i>
             Mis alimentos (0)
 
           </summary>
 
-          <div
-            id="foodList"
-            class="mt-3">
+          <div id="foodList" class="mt-3">
           </div>
 
         </details>
@@ -249,9 +199,7 @@
 
         </h3>
 
-        <div
-          id="total"
-          class="fs-4 fw-bold mb-4">
+        <div id="total" class="fs-4 fw-bold mb-4">
 
           0 kcal
 
@@ -259,9 +207,7 @@
 
         <!-- SALIR -->
 
-        <button
-          class="btn btn-outline-secondary w-100"
-          onclick="logout()">
+        <button class="btn btn-outline-secondary w-100" onclick="logout()">
 
           <i class="bi bi-box-arrow-right"></i>
           Salir
@@ -276,8 +222,7 @@
 
   <!-- Bootstrap JS -->
 
-  <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js">
   </script>
 
   <!-- APP JS -->
