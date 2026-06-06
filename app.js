@@ -177,6 +177,7 @@ async function addFood() {
   const protein100 = parseFloat(document.getElementById("protein100").value);
   const carbs100 = parseFloat(document.getElementById("carbs100").value);
   const fiber100 = parseFloat(document.getElementById("fiber100").value);
+  const fat100 = parseFloat(document.getElementById("fat100").value);
   const grams = parseFloat(document.getElementById("grams").value);
 
   if (
@@ -185,6 +186,7 @@ async function addFood() {
     isNaN(protein100) ||
     isNaN(carbs100) ||
     isNaN(fiber100) ||
+    isNaN(fat100) ||
     isNaN(grams)
   ) {
     alert("Completa todos los campos");
@@ -195,6 +197,7 @@ async function addFood() {
   const protein = (grams * protein100) / 100;
   const carbs = (grams * carbs100) / 100;
   const fiber = (grams * fiber100) / 100;
+  const fat = (grams * fat100) / 100;
 
   const now = new Date();
 
@@ -205,10 +208,12 @@ async function addFood() {
     protein100,
     carbs100,
     fiber100,
+    fat100,
     kcal,
     protein,
     carbs,
     fiber,
+    fat,
     date: now.toLocaleDateString("es-CL"),
     time: now.toLocaleTimeString("es-CL")
   };
@@ -223,7 +228,8 @@ async function addFood() {
       kcal100,
       protein100,
       carbs100,
-      fiber100
+      fiber100,
+      fat100
     });
 
     saveFoods();
@@ -261,6 +267,7 @@ function clearInputs() {
   document.getElementById("carbs100").value = "";
   document.getElementById("fiber100").value = "";
   document.getElementById("grams").value = "";
+  document.getElementById("fat100").value = "";
 }
 
 // =======================
@@ -295,6 +302,7 @@ function render() {
   let totalProtein = 0;
   let totalCarbs = 0;
   let totalFiber = 0;
+  let totalFat = 0;
 
   const registrosPorFecha = {};
 
@@ -303,6 +311,7 @@ function render() {
     totalProtein += r.protein || 0;
     totalCarbs += r.carbs || 0;
     totalFiber += r.fiber || 0;
+    totalFat += r.fat || 0;
 
     if (!registrosPorFecha[r.date]) {
       registrosPorFecha[r.date] = [];
@@ -321,12 +330,14 @@ function render() {
     let proteinFecha = 0;
     let carbsFecha = 0;
     let fiberFecha = 0;
+    let fatFecha = 0;
 
     registrosPorFecha[fecha].forEach(r => {
       totalFecha += r.kcal || 0;
       proteinFecha += r.protein || 0;
       carbsFecha += r.carbs || 0;
       fiberFecha += r.fiber || 0;
+      fatFecha += r.fat || 0;
     });
 
     const totalItems = registrosPorFecha[fecha].length;
@@ -360,6 +371,9 @@ function render() {
 
                 Fibra:
                 <strong>${(r.fiber || 0).toFixed(1)} g</strong><br>
+                
+                Grasa:
+                <strong>${(r.fat || 0).toFixed(1)} g</strong><br>
 
                 <small>${r.time}</small>
               </div>
@@ -460,6 +474,13 @@ totalDiv.innerHTML = `
 
   </div>
 
+  <div>
+  Grasa:
+  <strong>
+    ${totalFat.toFixed(1)} g
+  </strong>
+</div>
+
 `;
 }
 
@@ -497,6 +518,8 @@ function renderFoods() {
           Proteína: ${food.protein100 ?? 0} g<br>
           Carbohidratos: ${food.carbs100 ?? 0} g<br>
           Fibra: ${food.fiber100 ?? 0} g
+          <br>
+          Grasa: ${food.fat100 ?? 0} g
         </div>
 
         <button
@@ -543,6 +566,7 @@ function fillFoodData() {
   document.getElementById("protein100").value = found.protein100 ?? "";
   document.getElementById("carbs100").value = found.carbs100 ?? "";
   document.getElementById("fiber100").value = found.fiber100 ?? "";
+  document.getElementById("fat100").value = found.fat100 ?? "";
 }
 
 // =======================
