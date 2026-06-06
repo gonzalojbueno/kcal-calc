@@ -392,6 +392,23 @@ function render() {
 
 const proteinGoal = 160;
 
+const fatGoal = 70;
+
+const fatPercent =
+  Math.min(
+    (totalFat / fatGoal) * 100,
+    100
+  );
+
+let fatBarColor = "bg-success";
+
+if (fatPercent >= 100) {
+  fatBarColor = "bg-danger";
+}
+else if (fatPercent >= 80) {
+  fatBarColor = "bg-warning";
+}
+
 const proteinPercent =
   Math.min(
     (totalProtein / proteinGoal) * 100,
@@ -453,6 +470,50 @@ totalDiv.innerHTML = `
     g
 
   </div>
+
+  <hr>
+
+<div class="mb-2">
+
+  <strong>
+    Grasa:
+    ${totalFat.toFixed(1)} g /
+    ${fatGoal} g
+  </strong>
+
+</div>
+
+<div
+  class="progress mb-2"
+  style="height:30px;">
+
+  <div
+    class="progress-bar progress-bar-striped ${fatBarColor}"
+
+    role="progressbar"
+
+    style="
+      width:${fatPercent}%;
+    ">
+
+    ${fatPercent.toFixed(0)}%
+
+  </div>
+
+</div>
+
+<div class="text-muted mb-3">
+
+  Restante:
+
+  ${Math.max(
+    fatGoal - totalFat,
+    0
+  ).toFixed(1)}
+
+  g
+
+</div>
 
   <hr>
 
