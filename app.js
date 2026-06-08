@@ -353,9 +353,9 @@ function render() {
   const fatGoal = 70;
 
   const registrosDia =
-  registros.filter(
-    r => normalizeDateCL(r.date) === selectedDate
-  );
+    registros.filter(
+      r => normalizeDateCL(r.date) === selectedDate
+    );
 
   let totalGeneral = 0;
   let totalProtein = 0;
@@ -481,54 +481,57 @@ function render() {
 
   registrosDia.forEach(r => {
     list.innerHTML += `
-      <div class="item">
+    <details class="item">
+
+      <summary class="foodSummary">
+
         <div>
-          <span class="badge bg-secondary mb-1">
+          <span class="badge bg-secondary">
             ${r.meal || "Sin comida"}
-          </span><br>
-          <strong>${r.food}</strong><br>
+          </span>
 
-Cantidad: ${r.grams} g
+          <strong class="ms-2">
+            ${r.food}
+          </strong>
 
-<div class="small mt-1">
-
-  <strong>K:</strong>
-  ${(r.kcal || 0).toFixed(0)}
-
-  |
-
-  <strong>P:</strong>
-  ${(r.protein || 0).toFixed(0)}
-
-  |
-
-  <strong>C:</strong>
-  ${(r.carbs || 0).toFixed(0)}
-
-  |
-
-  <strong>F:</strong>
-  ${(r.fiber || 0).toFixed(0)}
-
-  |
-
-  <strong>G:</strong>
-  ${(r.fat || 0).toFixed(0)}
-
-</div>
-
-<small>${r.time}</small>
-
+          <span class="gramsBadge">
+            ${r.grams}g
+          </span>
         </div>
 
-        <button
-          class="deleteBtn"
-          onclick="deleteItem(${r.id})">
-          <i class="bi bi-trash3"></i>
-        </button>
+       <button
+  class="deleteBtn"
+  onclick="event.preventDefault(); event.stopPropagation(); deleteItem(${r.id});">
+  <i class="bi bi-trash3"></i>
+</button>
+
+      </summary>
+
+      <div class="foodDetails">
+
+        Kcal: ${(r.kcal || 0).toFixed(0)}<br>
+
+        Proteína:
+        ${(r.protein || 0).toFixed(1)} g<br>
+
+        Carbohidratos:
+        ${(r.carbs || 0).toFixed(1)} g<br>
+
+        Fibra:
+        ${(r.fiber || 0).toFixed(1)} g<br>
+
+        Grasa:
+        ${(r.fat || 0).toFixed(1)} g<br>
+
+        Hora:
+        ${r.time}
+
       </div>
-    `;
+
+    </details>
+  `;
   });
+
 }
 
 // =======================
@@ -570,11 +573,10 @@ function renderFoods() {
         </div>
 
         <button
-          class="deleteBtn"
-          onclick="deleteFood(${index})">
-          <i class="bi bi-trash3"></i>
-        </button>
-      </div>
+  class="deleteBtn"
+  onclick="deleteFood(${index})">
+  <i class="bi bi-trash3"></i>
+</button>
     `;
   });
 }

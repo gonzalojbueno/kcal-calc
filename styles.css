@@ -110,3 +110,40 @@ summary {
   font-size: 13px;
   text-align: center;
 }
+.itemHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.itemHeader strong {
+  font-size: 15px;
+}
+
+.itemHeader .deleteBtn {
+  margin-left: 10px;
+}
+.foodSummary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.foodSummary div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gramsBadge {
+  font-weight: bold;
+  color: #198754;
+}
+
+.foodDetails {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666;
+}
