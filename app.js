@@ -171,6 +171,7 @@ function formatDate(dateString) {
 // =======================
 
 async function addFood() {
+  const meal = document.getElementById("meal").value;
   const food = document.getElementById("food").value.trim();
 
   const kcal100 = parseFloat(document.getElementById("kcal100").value);
@@ -203,6 +204,7 @@ async function addFood() {
 
   const item = {
     food,
+    meal,
     grams,
     kcal100,
     protein100,
@@ -237,23 +239,23 @@ async function addFood() {
   }
 
   const { error } =
-  await supabaseClient
-    .from("registros")
-    .insert([item]);
+    await supabaseClient
+      .from("registros")
+      .insert([item]);
 
-if (error) {
+  if (error) {
 
-  console.error(
-    "Error guardando registro:",
-    error
-  );
+    console.error(
+      "Error guardando registro:",
+      error
+    );
 
-  return;
-}
+    return;
+  }
 
-await loadRegistrosFromSupabase();
+  await loadRegistrosFromSupabase();
 
-clearInputs();
+  clearInputs();
 }
 
 // =======================
@@ -292,6 +294,10 @@ async function deleteItem(id) {
 // RENDER REGISTROS
 // =======================
 
+function getTodayDateCL() {
+  return new Date().toLocaleDateString("es-CL");
+}
+
 function render() {
   const list = document.getElementById("list");
   const totalDiv = document.getElementById("total");
@@ -305,13 +311,17 @@ function render() {
   let totalFat = 0;
 
   const registrosPorFecha = {};
+  const today = getTodayDateCL();
 
   registros.forEach((r, index) => {
-    totalGeneral += r.kcal || 0;
-    totalProtein += r.protein || 0;
-    totalCarbs += r.carbs || 0;
-    totalFiber += r.fiber || 0;
-    totalFat += r.fat || 0;
+
+    if (r.date === today) {
+      totalGeneral += r.kcal || 0;
+      totalProtein += r.protein || 0;
+      totalCarbs += r.carbs || 0;
+      totalFiber += r.fiber || 0;
+      totalFat += r.fat || 0;
+    }
 
     if (!registrosPorFecha[r.date]) {
       registrosPorFecha[r.date] = [];
@@ -356,7 +366,11 @@ function render() {
           ${registrosPorFecha[fecha].map(r => `
             <div class="item">
               <div>
-                <strong>${r.food}</strong><br>
+                <span class="badge bg-secondary mb-1">
+  ${r.meal || "Sin comida"}
+</span><br>
+
+<strong>${r.food}</strong><br>
 
                 Cantidad: ${r.grams} g<br>
 
@@ -390,40 +404,40 @@ function render() {
     `;
   });
 
-const proteinGoal = 160;
+  const proteinGoal = 160;
 
-const fatGoal = 70;
+  const fatGoal = 70;
 
-const fatPercent =
-  Math.min(
-    (totalFat / fatGoal) * 100,
-    100
-  );
+  const fatPercent =
+    Math.min(
+      (totalFat / fatGoal) * 100,
+      100
+    );
 
-let fatBarColor = "bg-success";
+  let fatBarColor = "bg-success";
 
-if (fatPercent >= 100) {
-  fatBarColor = "bg-danger";
-}
-else if (fatPercent >= 80) {
-  fatBarColor = "bg-warning";
-}
+  if (fatPercent >= 100) {
+    fatBarColor = "bg-danger";
+  }
+  else if (fatPercent >= 80) {
+    fatBarColor = "bg-warning";
+  }
 
-const proteinPercent =
-  Math.min(
-    (totalProtein / proteinGoal) * 100,
-    100
-  );
+  const proteinPercent =
+    Math.min(
+      (totalProtein / proteinGoal) * 100,
+      100
+    );
 
-let proteinBarColor = "bg-danger";
+  let proteinBarColor = "bg-danger";
 
-if (proteinPercent >= 80) {
-  proteinBarColor = "bg-success";
-} else if (proteinPercent >= 50) {
-  proteinBarColor = "bg-warning";
-}
+  if (proteinPercent >= 80) {
+    proteinBarColor = "bg-success";
+  } else if (proteinPercent >= 50) {
+    proteinBarColor = "bg-warning";
+  }
 
-totalDiv.innerHTML = `
+  totalDiv.innerHTML = `
 
   <div class="fs-3 fw-bold mb-3">
     ${totalGeneral.toFixed(1)} kcal
@@ -463,9 +477,9 @@ totalDiv.innerHTML = `
     Restante:
 
     ${Math.max(
-      proteinGoal - totalProtein,
-      0
-    ).toFixed(1)}
+    proteinGoal - totalProtein,
+    0
+  ).toFixed(1)}
 
     g
 
