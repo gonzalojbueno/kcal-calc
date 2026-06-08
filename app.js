@@ -144,26 +144,16 @@ async function loadRegistrosFromSupabase() {
 // =======================
 
 function formatDate(dateString) {
+  const cleanDate = normalizeDateCL(dateString);
 
-  const [day, month, year] =
-    dateString.split("-");
+  const [day, month, year] = cleanDate.split("-");
 
   const months = [
-    "Ene",
-    "Feb",
-    "Mar",
-    "Abr",
-    "May",
-    "Jun",
-    "Jul",
-    "Ago",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dic"
+    "Ene", "Feb", "Mar", "Abr", "May", "Jun",
+    "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
   ];
 
-  return `${Number(day)} ${months[month - 1]} ${year}`;
+  return `${Number(day)} ${months[Number(month) - 1]} ${year}`;
 }
 
 // =======================
@@ -172,18 +162,37 @@ function formatDate(dateString) {
 
 function getTodayInputDate() {
   const today = new Date();
-
-  today.setMinutes(
-    today.getMinutes() - today.getTimezoneOffset()
-  );
-
+  today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
   return today.toISOString().split("T")[0];
 }
 
-function inputDateToCL(inputDate) {
-  const [year, month, day] = inputDate.split("-");
+function normalizeDateCL(dateString) {
+  if (!dateString) return "";
 
-  return `${day}-${month}-${year}`;
+  let clean = String(dateString).trim();
+
+  if (clean.includes("/")) {
+    const [day, month, year] = clean.split("/");
+    return `${Number(day)}-${Number(month)}-${year}`;
+  }
+
+  if (clean.includes("-")) {
+    const parts = clean.split("-");
+
+    if (parts[0].length === 4) {
+      const [year, month, day] = parts;
+      return `${Number(day)}-${Number(month)}-${year}`;
+    }
+
+    const [day, month, year] = parts;
+    return `${Number(day)}-${Number(month)}-${year}`;
+  }
+
+  return clean;
+}
+
+function inputDateToCL(inputDate) {
+  return normalizeDateCL(inputDate);
 }
 
 function getSelectedDateCL() {
@@ -191,11 +200,15 @@ function getSelectedDateCL() {
     document.getElementById("selectedDate")?.value;
 
   if (!selectedDate) {
-    return new Date().toLocaleDateString("es-CL");
+    return normalizeDateCL(
+      new Date().toLocaleDateString("es-CL")
+    );
   }
 
-  return inputDateToCL(selectedDate);
+  return normalizeDateCL(selectedDate);
 }
+
+
 
 
 
@@ -340,7 +353,9 @@ function render() {
   const fatGoal = 70;
 
   const registrosDia =
-    registros.filter(r => r.date === selectedDate);
+  registros.filter(
+    r => normalizeDateCL(r.date) === selectedDate
+  );
 
   let totalGeneral = 0;
   let totalProtein = 0;
