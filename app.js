@@ -485,46 +485,72 @@ function render() {
 
       <summary class="foodSummary">
 
-        <div>
-          <span class="badge bg-secondary">
-            ${r.meal || "Sin comida"}
-          </span>
+  <div class="foodLeft">
 
-          <strong class="ms-2">
-            ${r.food}
-          </strong>
+    <span class="badge bg-secondary">
+      ${r.meal || "Sin comida"}
+    </span>
 
-          <span class="gramsBadge">
-            ${r.grams}g
-          </span>
-        </div>
+    <strong>
+      ${r.food}
+    </strong>
 
-       <button
-  class="deleteBtn"
-  onclick="event.preventDefault(); event.stopPropagation(); deleteItem(${r.id});">
-  <i class="bi bi-trash3"></i>
-</button>
+    <span class="gramsBadge">
+      ${r.grams}g
+    </span>
 
-      </summary>
+  </div>
+
+  <div class="foodActions">
+
+    <span class="infoIcon">
+      ℹ️
+    </span>
+
+    <button
+      class="deleteBtn"
+      onclick="event.preventDefault();
+               event.stopPropagation();
+               deleteItem(${r.id});">
+
+      <i class="bi bi-trash3"></i>
+
+    </button>
+
+  </div>
+
+</summary>
 
       <div class="foodDetails">
 
-        Kcal: ${(r.kcal || 0).toFixed(0)}<br>
+          <strong>K:</strong>
+  ${(r.kcal || 0).toFixed(0)}
 
-        Proteína:
-        ${(r.protein || 0).toFixed(1)} g<br>
+  |
 
-        Carbohidratos:
-        ${(r.carbs || 0).toFixed(1)} g<br>
+  <strong>P:</strong>
+  ${(r.protein || 0).toFixed(0)}
 
-        Fibra:
-        ${(r.fiber || 0).toFixed(1)} g<br>
+  |
 
-        Grasa:
-        ${(r.fat || 0).toFixed(1)} g<br>
+  <strong>C:</strong>
+  ${(r.carbs || 0).toFixed(0)}
 
-        Hora:
-        ${r.time}
+  |
+
+  <strong>F:</strong>
+  ${(r.fiber || 0).toFixed(0)}
+
+  |
+
+  <strong>G:</strong>
+  ${(r.fat || 0).toFixed(0)}
+
+  <br>
+
+  <small>
+    ${r.time}
+  </small>
 
       </div>
 
@@ -561,22 +587,22 @@ function renderFoods() {
     `;
 
     foodList.innerHTML += `
-      <div class="item">
-        <div>
-          <strong>${food.food}</strong><br>
-          ${food.kcal100 ?? 0} kcal / 100g<br>
-          Proteína: ${food.protein100 ?? 0} g<br>
-          Carbohidratos: ${food.carbs100 ?? 0} g<br>
-          Fibra: ${food.fiber100 ?? 0} g
-          <br>
-          Grasa: ${food.fat100 ?? 0} g
-        </div>
+  <div class="item">
+    <div>
+      <strong>${food.food}</strong><br>
+      ${food.kcal100 ?? 0} kcal / 100g<br>
+      Proteína: ${food.protein100 ?? 0} g<br>
+      Carbohidratos: ${food.carbs100 ?? 0} g<br>
+      Fibra: ${food.fiber100 ?? 0} g<br>
+      Grasa: ${food.fat100 ?? 0} g
+    </div>
 
-        <button
-  class="deleteBtn"
-  onclick="deleteFood(${index})">
-  <i class="bi bi-trash3"></i>
-</button>
+    <button
+      class="deleteBtn"
+      onclick="deleteFood(${index})">
+      <i class="bi bi-trash3"></i>
+    </button>
+  </div>
     `;
   });
 }
