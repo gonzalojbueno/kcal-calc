@@ -471,27 +471,39 @@ function render() {
           <span class="badge bg-secondary mb-1">
             ${r.meal || "Sin comida"}
           </span><br>
-
           <strong>${r.food}</strong><br>
 
-          Cantidad: ${r.grams} g<br>
+Cantidad: ${r.grams} g
 
-          Kcal:
-          <strong>${(r.kcal || 0).toFixed(1)}</strong><br>
+<div class="small mt-1">
 
-          Proteína:
-          <strong>${(r.protein || 0).toFixed(1)} g</strong><br>
+  <strong>K:</strong>
+  ${(r.kcal || 0).toFixed(0)}
 
-          Carbohidratos:
-          <strong>${(r.carbs || 0).toFixed(1)} g</strong><br>
+  |
 
-          Fibra:
-          <strong>${(r.fiber || 0).toFixed(1)} g</strong><br>
+  <strong>P:</strong>
+  ${(r.protein || 0).toFixed(0)}
 
-          Grasa:
-          <strong>${(r.fat || 0).toFixed(1)} g</strong><br>
+  |
 
-          <small>${r.time}</small>
+  <strong>C:</strong>
+  ${(r.carbs || 0).toFixed(0)}
+
+  |
+
+  <strong>F:</strong>
+  ${(r.fiber || 0).toFixed(0)}
+
+  |
+
+  <strong>G:</strong>
+  ${(r.fat || 0).toFixed(0)}
+
+</div>
+
+<small>${r.time}</small>
+
         </div>
 
         <button
@@ -613,13 +625,13 @@ function setTodayDate() {
 window.addEventListener("load", async () => {
   setTodayDate();
   const selectedDateInput =
-  document.getElementById("selectedDate");
+    document.getElementById("selectedDate");
 
-if (selectedDateInput) {
-  selectedDateInput.value = getTodayInputDate();
+  if (selectedDateInput) {
+    selectedDateInput.value = getTodayInputDate();
 
-  selectedDateInput.addEventListener("change", render);
-}
+    selectedDateInput.addEventListener("change", render);
+  }
 
   await loadFoodsFromSupabase();
   await loadRegistrosFromSupabase();
